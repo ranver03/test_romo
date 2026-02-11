@@ -1,0 +1,14 @@
+# Visual Studio temporales
+.vs/
+[Bb]in/
+[Obj]/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Paquetes NuGet
+packages/
+
+# Archivos de configuración con datos sensibles (opcional si quieres ocultar el Web.config)
+# Web.config
