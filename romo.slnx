@@ -1,3 +1,6 @@
 <Solution>
+  <Folder Name="/Elementos de la solución/">
+    <File Path="README.md" />
+  </Folder>
   <Project Path="romo/romo.csproj" Id="750de93f-87bd-4c56-a6b3-fccc86801ada" />
 </Solution>

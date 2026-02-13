@@ -4,7 +4,7 @@ API REST desarrollada en .NET Framework 4.8 con Entity Framework para la gestió
 
 ## 🚀 Configuración Inicial
 1. **Base de Datos:**
-   - Ejecute el script localizado en `/Scripts/script_db_ramo.sql` en su instancia de SQL Server.
+   - Ejecute el script localizado en `/Database/script_db_ramo.sql` en su instancia de SQL Server.
 2. **Cadena de Conexión:**
    - Abra el archivo `Web.config`.
    - Modifique la sección `<connectionStrings>` con sus credenciales locales de SQL Server.

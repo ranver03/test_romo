@@ -51,7 +51,6 @@ namespace romo.Controllers
             if (string.IsNullOrEmpty(hash) || hash.Length < 20)
                 return Unauthorized();
 
-            // Normalizar $2y$ -> $2a$ si tu versión de BCrypt no acepta $2y$
             if (hash.StartsWith("$2y$"))
                 hash = "$2a$" + hash.Substring(4);
 
