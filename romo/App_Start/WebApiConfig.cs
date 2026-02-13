@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace romo
 {
@@ -9,9 +10,11 @@ namespace romo
     {
         public static void Register(HttpConfiguration config)
         {
-            // Configuración y servicios de Web API
-            config.EnableCors();
-            // Rutas de Web API
+            // 1. Configurar CORS de forma explícita
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+
+            // 2. Rutas de Web API
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
@@ -19,6 +22,10 @@ namespace romo
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            // 3. Forzar que siempre devuelva JSON (Evita problemas de formato)
+            var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
+            config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
         }
     }
 }

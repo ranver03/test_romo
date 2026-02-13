@@ -47,7 +47,26 @@ namespace romo.Controllers
             var usuario = db.Usuarios.FirstOrDefault(u => u.Username == request.Username);
 
             // Verificamos si el usuario existe y si la contraseña coincide con el hash
-            if (usuario != null && BCrypt.Net.BCrypt.Verify(request.Password, usuario.PasswordHash))
+            var hash = usuario?.PasswordHash?.Trim();
+            if (string.IsNullOrEmpty(hash) || hash.Length < 20)
+                return Unauthorized();
+
+            // Normalizar $2y$ -> $2a$ si tu versión de BCrypt no acepta $2y$
+            if (hash.StartsWith("$2y$"))
+                hash = "$2a$" + hash.Substring(4);
+
+            bool ok;
+            try
+            {
+                ok = BCrypt.Net.BCrypt.Verify(request.Password, hash);
+            }
+            catch (BCrypt.Net.SaltParseException)
+            {
+                // Loguear hash inválido para diagnóstico
+                return Unauthorized();
+            }
+
+            if (usuario != null && ok)
             {
                 return Ok(new
                 {

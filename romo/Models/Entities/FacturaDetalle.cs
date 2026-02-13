@@ -13,6 +13,9 @@ namespace romo.API.Models.Entities
         public int Cantidad { get; set; }
         public decimal PrecioUnitarioHistorico { get; set; }
         public decimal SubtotalLinea { get; set; }
+        public decimal IVALinea { get; set; }
+        public decimal TotalLinea { get; set; }
+
 
         [ForeignKey("FacturaID")]
         public virtual Factura Factura { get; set; }
