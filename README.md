@@ -10,7 +10,8 @@ API REST desarrollada en .NET Framework 4.8 con Entity Framework para la gestió
    - Modifique la sección `<connectionStrings>` con sus credenciales locales de SQL Server.
 3. **Ejecución:**
    - Abra la solución (.sln) en Visual Studio.
-   - Restaure los paquetes NuGet y presione `F5`.
+   - Restaure los paquetes NuGet y presione `F5`. > Tools (Herramientas) > NuGet Package Manager > Package Manager Console
+     Escriba en la consola: Update-Package -reinstall
 
 ## 🛠 Tecnologías
 - C# / .NET Web API
